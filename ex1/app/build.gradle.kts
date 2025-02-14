@@ -1,16 +1,18 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.lab1.myapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.lab1.myapplication"
         minSdk = 28
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -50,7 +52,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     implementation("androidx.activity:activity-compose:1.10.0")
@@ -59,6 +60,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("com.google.dagger:dagger:2.50")
+    kapt("com.google.dagger:dagger-compiler:2.50")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")

@@ -11,10 +11,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.lab1.myapplication.ui.theme.MyApplicationTheme
+import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var databaseHelper: DatabaseHelper
+    @Inject
+    lateinit var networkUtils: NetworkUtils
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+       (application as App).appComponent.injectMainActivity(this)
+
+        val str = databaseHelper.getString()
         setContent {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
@@ -22,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting(str)
                 }
             }
         }
